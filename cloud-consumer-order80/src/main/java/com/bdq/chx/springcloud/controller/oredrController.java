@@ -77,5 +77,11 @@ public class oredrController {
 
     }
 
+    @GetMapping("/consumer/slethzipkin")
+    public String getSlethZipkin(){
+        return restTemplate.getForObject(PAYMENT_URL+"/slethzipkin",String.class);
+
+    }
+
 
 }

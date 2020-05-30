@@ -97,5 +97,11 @@ public class PaymentController {
 
     }
 
+    @GetMapping(value = "/slethzipkin")
+    public String getSlethZipkin(){
+
+        return  "is mysleth zipkin 芜湖";
+    }
+
 
 }
