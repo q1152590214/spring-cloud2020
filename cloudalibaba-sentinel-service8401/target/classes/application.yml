@@ -1,0 +1,27 @@
+server:
+  port: 8401
+spring:
+  application:
+    name: cloud-sentinel-nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719 #假如占用就会从 8719+1 一直找到可以用的端口
+          #sentinel 进行数据持久化配置 nacos
+      datasource:
+         ds1:
+           nacos:
+            server-addr: localhost:8848
+            dataId: cloud-sentinel-nacos
+            gruopId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

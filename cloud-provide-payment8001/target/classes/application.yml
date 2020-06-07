@@ -1,0 +1,37 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-provude-server
+  zipkin:
+    base-url: http://localhost:9411 #监控的数据显示到什么地址
+    sleuth:
+      sampler:
+        probability: 1 # 采样率值0~1之间 1表示全部采集  一般为0.5
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/myspringcloud?useUnicode=true&characterEncoding-utr-8&useSSL=false
+    driver-class-name: org.gjt.mm.mysql.Driver
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.bdqn.chx.entity
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+     defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka,http://eureka7003.com:7003/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    #在eureka上显示的服务名称
+    instance-id: cloud-provude-server8001
+    #显示服务IP地址
+    prefer-ip-address: true
+    #修改项Eureka server 发送心跳的间隔时间
+    lease-expiration-duration-in-seconds: 1
+    #修改Eureka server收到最后一次心跳，的等待时间上限超出就删除此服务
+    lease-renewal-interval-in-seconds: 2

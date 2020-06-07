@@ -1,0 +1,31 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-geteway
+  cloud:
+    gateway:
+      routes:
+        - id: payment_routh
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PROVUDE-SERVER
+          predicates:
+            - Path=/payment/get/**
+        - id: payment_routh2
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PROVUDE-SERVER
+          predicates:
+              - Path=/payment/lb/** #有多个断路，可以去官网查看
+
+      discovery:
+        locator:
+          enabled: true #开启动态路由
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    hostname: cloud-geteway-service

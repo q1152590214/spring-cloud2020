@@ -1,0 +1,5 @@
+spring:
+  profiles:
+#    active: dev #什么模式，什么环境
+#    active: info #什么模式，什么环境
+    active: dev #什么模式，什么环境

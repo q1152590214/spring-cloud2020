@@ -1,0 +1,25 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-provude-server
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/myspringcloud?useUnicode=true&characterEncoding-utr-8&useSSL=false
+    driver-class-name: org.gjt.mm.mysql.Driver
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.bdqn.chx.entity
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+     defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka,http://eureka7003.com:7003/eureka
+  instance:
+    instance-id: cloud-provude-server8002
+    prefer-ip-address: true
